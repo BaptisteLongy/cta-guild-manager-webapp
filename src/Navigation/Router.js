@@ -6,14 +6,19 @@ import Home from './Home.js'
 import MemberList from '../MemberList/MemberList.js'
 
 class Router extends Component {
+
+    registerMember = (registeredMember) => {
+        this.props.onMemberRegistration(registeredMember)
+    }
+
     render() {
         return (
             <BrowserRouter>
                 <Sidemenu />
 
                 <Switch>
-                    <Route path="/" exact render={() => <Home />} />
-                    <Route path="/memberheroslist" render={() => <MemberHerosList memberId={2} />} />
+                    <Route path="/" exact render={() => <Home onMemberSelected={this.registerMember}/>} />
+                    <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember} />} />
                     <Route path="/memberlist" render={() => <MemberList />} />
                 </Switch>
 
