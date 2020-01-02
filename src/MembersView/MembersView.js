@@ -13,7 +13,7 @@ class MembersView extends Component {
     componentDidMount() {
         getMemberList().then(
             (memberList) => {
-                memberList.map(
+                memberList.forEach(
                     (member) => {
                         getMemberHerosList(member.id).then(
                             (herosList) => {
