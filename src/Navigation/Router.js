@@ -4,6 +4,7 @@ import Sidemenu from './Sidemenu.js'
 import MemberHerosList from '../MemberHerosList/MemberHerosList.js'
 import Home from './Home.js'
 import MemberList from '../MemberList/MemberList.js'
+import MembersView from '../MembersView/MembersView.js'
 
 class Router extends Component {
 
@@ -18,6 +19,7 @@ class Router extends Component {
 
                 <Switch>
                     <Route path="/" exact render={() => <Home onMemberSelected={this.registerMember}/>} />
+                    <Route path="/members" exact render={() => <MembersView />} />
                     <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember} />} />
                     <Route path="/memberlist" render={() => <MemberList />} />
                 </Switch>
