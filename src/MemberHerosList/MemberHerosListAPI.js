@@ -1,7 +1,8 @@
-const CTAManagerEndpoint = 'http://localhost:8080'
+const CTAManagerEndpoint = process.env.REACT_APP_CTA_Manager_Endpoint
 
 export function getMemberHerosList(memberId) {
     const url = CTAManagerEndpoint + '/Members/' + memberId + '/Heros'
+    console.log(CTAManagerEndpoint)
 
     return fetch(url)
         .then((response) => response.json())
