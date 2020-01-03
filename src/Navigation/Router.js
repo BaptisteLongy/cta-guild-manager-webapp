@@ -5,6 +5,7 @@ import MemberHerosList from '../MemberHerosList/MemberHerosList.js'
 import Home from './Home.js'
 import MemberList from '../MemberList/MemberList.js'
 import MembersView from '../MembersView/MembersView.js'
+import HerosConfiguration from '../Configuration/HerosConfiguration.js'
 
 class Router extends Component {
 
@@ -22,6 +23,7 @@ class Router extends Component {
                     <Route path="/members" exact render={() => <MembersView />} />
                     <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember} />} />
                     <Route path="/memberlist" render={() => <MemberList />} />
+                    <Route path="/heroesconfiguration" render={() => <HerosConfiguration />} />
                 </Switch>
 
             </BrowserRouter>

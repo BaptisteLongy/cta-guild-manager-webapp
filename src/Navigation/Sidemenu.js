@@ -14,6 +14,7 @@ class Sidemenu extends Component {
                 <RadiumLink className="menu-item" to="/members">Les héros de chacun</RadiumLink>
                 <RadiumLink className="menu-item" to="/memberheroslist">Mes héros</RadiumLink>
                 <RadiumLink className="menu-item" to="/memberlist">Liste des Membres</RadiumLink>
+                <RadiumLink className="menu-item" to="/heroesconfiguration">Configuration des héros</RadiumLink>
             </Menu>
         )
     }
