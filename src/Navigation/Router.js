@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Sidemenu from './Sidemenu.js'
 import MemberHerosList from '../MemberHerosList/MemberHerosList.js'
 import Home from './Home.js'
 import MemberList from '../MemberList/MemberList.js'
 import MembersView from '../MembersView/MembersView.js'
 import HerosConfiguration from '../Configuration/HerosConfiguration.js'
+import AppHeader from './AppHeader.js'
+import SignIn from '../User/SignIn.js'
 
+// Props
+// onMemberRegistration callback to pass up registered member
 class Router extends Component {
 
     registerMember = (registeredMember) => {
@@ -16,7 +19,7 @@ class Router extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Sidemenu />
+                <AppHeader />    
 
                 <Switch>
                     <Route path="/" exact render={() => <Home onMemberSelected={this.registerMember}/>} />
@@ -24,6 +27,7 @@ class Router extends Component {
                     <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember} />} />
                     <Route path="/memberlist" render={() => <MemberList />} />
                     <Route path="/heroesconfiguration" render={() => <HerosConfiguration />} />
+                    <Route path="/signin" render={() => <SignIn />} />
                 </Switch>
 
             </BrowserRouter>

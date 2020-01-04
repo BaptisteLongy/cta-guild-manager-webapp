@@ -55,3 +55,23 @@ export function updateHeroConfiguration(heroId, newHeroName, newHeroElement) {
             return response;
         })
 }
+
+export function login(username, password) {
+    const url = CTAManagerEndpoint + "/auth/signin"
+    const loginRequest = {
+        usernameOrEmail: username,
+        password: password
+    }
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginRequest),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("HTTP status " + response.status);
+            }
+            return response.json();
+        })
+}
