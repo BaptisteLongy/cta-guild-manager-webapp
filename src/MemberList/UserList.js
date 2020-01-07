@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-import { Type } from 'react-bootstrap-table2-editor';
-import { getUserList } from '../API/CTAManagerAPI.js'
+import cellEditFactory, { Type } from 'react-bootstrap-table2-editor';
+import { getUserList, updateUserRoles } from '../API/CTAManagerAPI.js'
 
 class User {
-    constructor(id, name, isMember, isAdmin) {
+    constructor(id, username, name, isMember, isAdmin) {
         this.id = id;
+        this.username = username;
         this.name = name;
         this.isMember = isMember;
         this.isAdmin = isAdmin;
@@ -23,12 +24,12 @@ class UserList extends Component {
             var theUserList = []
             var theUser
             response.forEach(element => {
-                theUser = new User(element.id, element.name, false, false)
+                theUser = new User(element.id, element.username, element.name, "Non", "Non")
                 if (element.roles.some(e => e.name === 'ROLE_MEMBER')) {
-                    theUser.isMember = true
+                    theUser.isMember = "Oui"
                 }
                 if (element.roles.some(e => e.name === 'ROLE_ADMIN')) {
-                    theUser.isAdmin = true
+                    theUser.isAdmin = "Oui"
                 }
                 theUserList.push(theUser)
             });
@@ -36,14 +37,23 @@ class UserList extends Component {
         })
     }
 
-    updateRoles() {
+    updateRoles = (row) => {
+        var isMember, isAdmin
 
+        if (row.isMember == "Oui") { isMember = true } else { (isMember = false) }
+        if (row.isAdmin == "Oui") { (isAdmin = true) } else { (isAdmin = false) }
+        updateUserRoles(row.username, isMember, isAdmin)
     }
 
     render() {
         const columns = [{
             dataField: 'id',
             text: 'ID',
+            hidden: true
+        },
+        {
+            dataField: 'username',
+            text: 'login',
             hidden: true
         },
         {
@@ -54,24 +64,47 @@ class UserList extends Component {
         }, {
             dataField: 'isMember',
             text: 'Membre',
-            editor: { type: Type.CHECKBOX, value: 'true:false' },
-            formatter: (cell, row, rowIndex) => {
-                return (<input type="checkbox" checked={cell} onChange={() => { }} />)
+            editor: {
+                type: Type.SELECT,
+                options: [{
+                    value: 'Oui',
+                    label: 'Oui'
+                }, {
+                    value: 'Non',
+                    label: 'Non'
+                }
+                ]
             }
         },
         {
             dataField: 'isAdmin',
             text: 'Administrateur',
-            editor: { type: Type.CHECKBOX, value: 'true:false' },
-            formatter: (cell, row, rowIndex) => {
-                return (<input type="checkbox" checked={cell} onChange={() => { }} />)
+            editor: {
+                type: Type.SELECT,
+                options: [{
+                    value: 'Oui',
+                    label: 'Oui'
+                }, {
+                    value: 'Non',
+                    label: 'Non'
+                }
+                ]
             }
-        }
+        },
         ];
 
         return (
             <div className="userTable">
-                <BootstrapTable keyField='id' data={this.state.userList} columns={columns} filter={filterFactory()} />
+                <BootstrapTable
+                    keyField='id'
+                    data={this.state.userList}
+                    columns={columns}
+                    filter={filterFactory()}
+                    cellEdit={cellEditFactory({
+                        mode: 'click',
+                        afterSaveCell: (oldValue, newValue, row, column) => this.updateRoles(row),
+                        blurToSave: true
+                    })} />
             </div>
         )
     }

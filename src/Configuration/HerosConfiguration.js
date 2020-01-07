@@ -21,7 +21,7 @@ class HerosConfiguration extends Component {
         this.updateHerosConfigurationList()
     }
 
-    updateHeroConfiguration = (oldValue, newValue, row, column) => {
+    updateHeroConfiguration = (row) => {
         updateHeroConfiguration(row.id, row.name, row.element).then(
             () => this.updateHerosConfigurationList()
         )
@@ -76,7 +76,7 @@ class HerosConfiguration extends Component {
                     columns={columns}
                     cellEdit={cellEditFactory({
                         mode: 'click',
-                        afterSaveCell: (oldValue, newValue, row, column) => this.updateHeroConfiguration(oldValue, newValue, row, column),
+                        afterSaveCell: (oldValue, newValue, row, column) => this.updateHeroConfiguration(row),
                         blurToSave: true
                     })}
                 />

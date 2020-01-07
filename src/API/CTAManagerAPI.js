@@ -87,3 +87,29 @@ export function getUserList() {
             return response.json();
         })
 }
+
+export function updateUserRoles(username, isMember, isAdmin) {
+    const url = CTAManagerEndpoint + "/users/" + username
+
+    var updateUserRolesRequest = {
+        username: username,
+        roles: [{ id: 1 }]
+    }
+
+
+    if (isMember) { updateUserRolesRequest.roles.push({ id: 3 }) }
+    if (isAdmin) { updateUserRolesRequest.roles.push({ id: 2 }) }
+
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(updateUserRolesRequest),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("HTTP status " + response.status);
+            }
+            return response.json();
+        })
+}
