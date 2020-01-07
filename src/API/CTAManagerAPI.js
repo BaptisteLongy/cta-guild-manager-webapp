@@ -75,3 +75,15 @@ export function login(username, password) {
             return response.json();
         })
 }
+
+export function getUserList() {
+    const url = CTAManagerEndpoint + "/users/"
+
+    return fetch(url)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("HTTP status " + response.status);
+            }
+            return response.json();
+        })
+}

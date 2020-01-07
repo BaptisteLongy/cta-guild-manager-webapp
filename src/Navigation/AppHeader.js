@@ -17,6 +17,7 @@ class AppHeader extends Component {
                         <Nav.Link as={Link} to="/members">Les héros de chacun</Nav.Link>
                         <Nav.Link as={Link} to="/memberheroslist">Mes héros</Nav.Link>
                         <Nav.Link as={Link} to="/memberlist">Liste des Membres</Nav.Link>
+                        <Nav.Link as={Link} to="/userlist">Utilisateurs</Nav.Link>
                         <Nav.Link as={Link} to="/heroesconfiguration">Configuration des héros</Nav.Link>
                         <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
                     </Nav>
