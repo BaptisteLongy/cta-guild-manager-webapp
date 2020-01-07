@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import { Type } from 'react-bootstrap-table2-editor';
 import { getUserList } from '../API/CTAManagerAPI.js'
 
 class User {
@@ -9,15 +10,6 @@ class User {
         this.name = name;
         this.isMember = isMember;
         this.isAdmin = isAdmin;
-    }
-}
-
-function Checkbox(cell) {
-    if (cell === true) {
-        return <input type="checkbox" checked />
-    }
-    else {
-        return <input type="checkbox" />
     }
 }
 
@@ -44,7 +36,9 @@ class UserList extends Component {
         })
     }
 
+    updateRoles() {
 
+    }
 
     render() {
         const columns = [{
@@ -60,12 +54,18 @@ class UserList extends Component {
         }, {
             dataField: 'isMember',
             text: 'Membre',
-            formatter: (cell) => Checkbox(cell)
+            editor: { type: Type.CHECKBOX, value: 'true:false' },
+            formatter: (cell, row, rowIndex) => {
+                return (<input type="checkbox" checked={cell} onChange={() => { }} />)
+            }
         },
         {
             dataField: 'isAdmin',
             text: 'Administrateur',
-            formatter: (cell) => Checkbox(cell)
+            editor: { type: Type.CHECKBOX, value: 'true:false' },
+            formatter: (cell, row, rowIndex) => {
+                return (<input type="checkbox" checked={cell} onChange={() => { }} />)
+            }
         }
         ];
 
