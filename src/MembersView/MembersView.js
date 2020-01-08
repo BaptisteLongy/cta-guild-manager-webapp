@@ -15,7 +15,7 @@ class MembersView extends Component {
             (memberList) => {
                 memberList.forEach(
                     (member) => {
-                        getMemberHerosList(member.id).then(
+                        getMemberHerosList(member.username).then(
                             (herosList) => {
                                 var newHeroList = [...this.state.herosList, ...herosList]
                                 this.setState({

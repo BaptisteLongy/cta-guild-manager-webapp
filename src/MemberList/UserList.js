@@ -64,6 +64,7 @@ class UserList extends Component {
         }, {
             dataField: 'isMember',
             text: 'Membre',
+            sort: true,
             editor: {
                 type: Type.SELECT,
                 options: [{
@@ -79,6 +80,7 @@ class UserList extends Component {
         {
             dataField: 'isAdmin',
             text: 'Administrateur',
+            sort: true,
             editor: {
                 type: Type.SELECT,
                 options: [{

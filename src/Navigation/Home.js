@@ -30,7 +30,7 @@ class Home extends Component {
           <select onChange={this.saveLoggedMember} >
             {this.state.memberList.map(
               (member) => {
-              return <option value={member.id} key={member.id}>{member.name}</option>
+              return <option value={member.username} key={member.id}>{member.name}</option>
               }
             )}
           </select>
