@@ -21,10 +21,20 @@ class App extends Component {
 
   }
 
+  handleLogout = () => {
+    localStorage.removeItem("accessToken");
+
+    this.setState({
+      registeredMember: null,
+      isAuthenticated: false
+    });
+
+  }
+
   render() {
     return (
       <div id="App">
-        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser}/>
+        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser} onUserLogout={this.handleLogout}/>
       </div>
     )
   }

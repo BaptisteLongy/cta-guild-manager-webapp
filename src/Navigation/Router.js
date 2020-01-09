@@ -20,7 +20,7 @@ class Router extends Component {
     render() {
         return (
             <BrowserRouter>
-                <AppHeader />    
+                <AppHeader onUserLogout={this.props.onUserLogout}/>    
 
                 <Switch>
                     <Route path="/" exact render={() => <Home />} />
