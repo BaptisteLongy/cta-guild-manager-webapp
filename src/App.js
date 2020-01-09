@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
 import './App.css'
 import Router from './Navigation/Router.js'
+import { getCurrentUser } from './API/CTAManagerAPI.js'
 
 
 class App extends Component {
-  state= {
-    registeredMember: null
+  state = {
+    registeredMember: null,
+    isAuthenticated: false
   }
 
-  registerMember = (member) => {
-    this.setState({registeredMember: member})
+  loadCurrentUser = () => {
+
+    getCurrentUser().then(user => {
+      this.setState({
+        registeredMember: user,
+        isAuthenticated: true
+      })
+    })
+
   }
 
   render() {
     return (
       <div id="App">
-        <Router onMemberRegistration={this.registerMember} loggedMember={this.state.registeredMember}/>
+        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser}/>
       </div>
     )
   }

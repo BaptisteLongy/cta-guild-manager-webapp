@@ -40,7 +40,9 @@ class UserList extends Component {
     updateRoles = (row) => {
         var isMember, isAdmin
 
+        // eslint-disable-next-line
         if (row.isMember == "Oui") { isMember = true } else { (isMember = false) }
+        // eslint-disable-next-line
         if (row.isAdmin == "Oui") { (isAdmin = true) } else { (isAdmin = false) }
         updateUserRoles(row.username, isMember, isAdmin)
     }

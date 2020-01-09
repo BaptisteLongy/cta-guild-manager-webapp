@@ -14,8 +14,10 @@ export default class SignIn extends Component {
     handleSignInSubmit = (event) => {
         event.preventDefault()
         login(this.state.login, this.state.password)
-            .then((response) => localStorage.setItem("accessToken", response.accessToken)
-
+            .then((response) => {
+                localStorage.setItem("accessToken", response.accessToken)
+                this.props.onUserLogin()
+            }
             )
     }
 

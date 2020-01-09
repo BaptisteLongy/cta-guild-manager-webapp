@@ -27,7 +27,7 @@ class MemberHerosList extends Component {
 
     componentDidMount() {
         this.updateConfiguration()
-        this.updateHerosList(this.props.memberId)
+        this.updateHerosList(this.props.memberId.username)
     }
 
     findHeroForConfiguration(configuration) {
