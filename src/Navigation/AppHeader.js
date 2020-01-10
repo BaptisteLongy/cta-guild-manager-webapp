@@ -16,16 +16,19 @@ class AppHeader extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/members">Les héros de chacun</Nav.Link>
-                        <Nav.Link as={Link} to="/memberlist">Liste des Membres</Nav.Link>
-                        <Nav.Link as={Link} to="/userlist">Utilisateurs</Nav.Link>
-                        <Nav.Link as={Link} to="/heroesconfiguration">Configuration des héros</Nav.Link>
                         <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
-                        {(this.props.loggedUser === null) ? null : <NavDropdown title={this.props.loggedUser.name} id="basic-nav-dropdown">
-                            <NavDropdown.Item as={Link} to="/memberheroslist">Mes héros</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item onClick={this.props.onUserLogout}>Sign Out</NavDropdown.Item>
-                        </NavDropdown>}
-                        
+                        {(this.props.loggedUser === null) ? null :
+                            <NavDropdown title={this.props.loggedUser.name} id="basic-nav-dropdown">
+                                <NavDropdown.Item as={Link} to="/memberheroslist">Mes héros</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item as={Link} to="/memberlist">Liste des Membres</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/userlist">Utilisateurs</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/heroesconfiguration">Configuration des héros</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item onClick={this.props.onUserLogout}>Sign Out</NavDropdown.Item>
+                            </NavDropdown>
+                        }
+
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
