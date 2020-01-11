@@ -21,7 +21,6 @@ class AppHeader extends Component {
                             <NavDropdown title={this.props.loggedUser.name} id="basic-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="/memberheroslist">Mes héros</NavDropdown.Item>
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item as={Link} to="/memberlist">Liste des Membres</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/userlist">Utilisateurs</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/heroesconfiguration">Configuration des héros</NavDropdown.Item>
                                 <NavDropdown.Divider />

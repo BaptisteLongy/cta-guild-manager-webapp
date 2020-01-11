@@ -17,8 +17,14 @@ class App extends Component {
         registeredMember: user,
         isAuthenticated: true
       })
-    })
+    }).catch(error => {
+      
+    });
 
+  }
+
+  componentDidMount() {
+    this.loadCurrentUser()
   }
 
   handleLogout = () => {
@@ -34,7 +40,7 @@ class App extends Component {
   render() {
     return (
       <div id="App">
-        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser} onUserLogout={this.handleLogout}/>
+        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser} onUserLogout={this.handleLogout} />
       </div>
     )
   }

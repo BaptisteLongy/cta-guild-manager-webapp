@@ -55,7 +55,7 @@ export default class SignIn extends Component {
 
                     <button type="submit" className="btn btn-primary btn-block">Submit</button>
                     <p className="forgot-password text-right">
-                        <a href="/">Mot de passe oublié ?</a>
+                        <a href="/">Mot de passe oublié ? Faut demander à Bugs pour le moment !</a>
                     </p>
                 </form>
             </div>
