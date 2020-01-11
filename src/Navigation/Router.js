@@ -7,6 +7,7 @@ import MembersView from '../MembersView/MembersView.js'
 import HerosConfiguration from '../Configuration/HerosConfiguration.js'
 import AppHeader from './AppHeader.js'
 import SignIn from '../User/SignIn.js'
+import SignUp from '../User/SignUp.js'
 import UserList from '../MemberList/UserList.js'
 
 // Props
@@ -30,6 +31,7 @@ class Router extends Component {
                     <Route path="/userlist" render={() => <UserList />} />
                     <Route path="/heroesconfiguration" render={() => <HerosConfiguration />} />
                     <Route path="/signin" render={() => <SignIn onUserLogin={this.onUserLogin}/>} />
+                    <Route path="/signup" render={() => <SignUp />} />
                 </Switch>
 
             </BrowserRouter>

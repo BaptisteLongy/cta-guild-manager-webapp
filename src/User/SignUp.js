@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {createNewUser} from '../API/CTAManagerAPI.js'
 
 export default class SignIn extends Component {
 
@@ -14,6 +15,7 @@ export default class SignIn extends Component {
 
     handleSignUpSubmit = (event) => {
         event.preventDefault()
+        createNewUser(this.state.name, this.state.username, this.state.email, this.state.password)
 
     }
 

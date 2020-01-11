@@ -149,3 +149,28 @@ export function getCurrentUser() {
         method: 'GET'
     });
 }
+
+
+export function createNewUser(name, username, email, password) {
+    const url = CTAManagerEndpoint + "/auth/signup"
+
+    var createNewUserRequest = {
+        name: name,
+        username: username,
+        email: email,
+        password: password
+    }
+
+
+    return fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(createNewUserRequest),
+        headers: { 'Content-Type': 'application/json' }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("HTTP status " + response.status);
+            }
+            return response.json();
+        })
+}

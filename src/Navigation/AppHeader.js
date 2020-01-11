@@ -17,6 +17,7 @@ class AppHeader extends Component {
                     <Nav className="mr-auto">
                         <Nav.Link as={Link} to="/members">Les héros de chacun</Nav.Link>
                         {(this.props.loggedUser === null) ? <Nav.Link as={Link} to="/signin">Sign In</Nav.Link> : null}
+                        {(this.props.loggedUser === null) ? <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link> : null}
                         {(this.props.loggedUser === null) ? null :
                             <NavDropdown title={this.props.loggedUser.name} id="basic-nav-dropdown">
                                 <NavDropdown.Item as={Link} to="/memberheroslist">Mes héros</NavDropdown.Item>
