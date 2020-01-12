@@ -27,11 +27,10 @@ class App extends Component {
 
   loadUserRights() {
     getUserInfo(this.state.registeredMember.username).then(
-      (userInfo) => {console.log("user info")
-      console.log(userInfo.roles)
+      (userInfo) => 
       this.setState({
 userRoles: userInfo.roles
-      })}
+      })
     )
   }
 
