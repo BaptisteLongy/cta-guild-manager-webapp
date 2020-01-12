@@ -26,7 +26,7 @@ class Router extends Component {
                 <Switch>
                     <Route path="/" exact render={() => <Home />} />
                     <Route path="/members" exact render={() => <MembersView />} />
-                    <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember} />} />
+                    <Route path="/memberheroslist" render={() => <MemberHerosList memberId={this.props.loggedMember.username} />} />
                     <Route path="/memberlist" render={() => <MemberList />} />
                     <Route path="/userlist" render={() => <UserList />} />
                     <Route path="/heroesconfiguration" render={() => <HerosConfiguration />} />
