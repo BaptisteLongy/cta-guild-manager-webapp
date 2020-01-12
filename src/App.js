@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import './App.css'
 import Router from './Navigation/Router.js'
-import { getCurrentUser } from './API/CTAManagerAPI.js'
+import { getCurrentUser, getUserInfo } from './API/CTAManagerAPI.js'
 
 
 class App extends Component {
   state = {
     registeredMember: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    userRoles: []
   }
 
   loadCurrentUser = () => {
@@ -17,10 +18,21 @@ class App extends Component {
         registeredMember: user,
         isAuthenticated: true
       })
+      this.loadUserRights()
     }).catch(error => {
       
     });
 
+  }
+
+  loadUserRights() {
+    getUserInfo(this.state.registeredMember.username).then(
+      (userInfo) => {console.log("user info")
+      console.log(userInfo.roles)
+      this.setState({
+userRoles: userInfo.roles
+      })}
+    )
   }
 
   componentDidMount() {
@@ -32,7 +44,8 @@ class App extends Component {
 
     this.setState({
       registeredMember: null,
-      isAuthenticated: false
+      isAuthenticated: false,
+      userRoles: []
     });
 
   }
@@ -40,7 +53,7 @@ class App extends Component {
   render() {
     return (
       <div id="App">
-        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser} onUserLogout={this.handleLogout} />
+        <Router loggedMember={this.state.registeredMember} onUserLogin={this.loadCurrentUser} onUserLogout={this.handleLogout} loggedMemberRoles={this.state.userRoles}/>
       </div>
     )
   }
