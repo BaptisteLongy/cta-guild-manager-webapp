@@ -11,7 +11,7 @@ class AppHeader extends Component {
 
         return (
             <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="/">Blanks</Navbar.Brand>
+                <Navbar.Brand href="/">Blanks<sup>BETA</sup></Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
