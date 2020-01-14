@@ -11,8 +11,9 @@ import SignUp from '../User/SignUp.js'
 import UserList from '../MemberList/UserList.js'
 
 // Props
-// onMemberRegistration callback to pass up registered member
+// Todo
 class Router extends Component {
+    
 
     onUserLogin = () => {
         this.props.onUserLogin()
@@ -30,7 +31,7 @@ class Router extends Component {
                     <Route path="/memberlist" render={() => <MemberList />} />
                     <Route path="/userlist" render={() => <UserList />} />
                     <Route path="/heroesconfiguration" render={() => <HerosConfiguration />} />
-                    <Route path="/signin" render={() => <SignIn onUserLogin={this.onUserLogin}/>} />
+                    <Route path="/signin" render={(props) => <SignIn onUserLogin={this.onUserLogin} {...props}/>} />
                     <Route path="/signup" render={() => <SignUp />} />
                 </Switch>
 

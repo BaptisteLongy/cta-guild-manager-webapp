@@ -17,6 +17,8 @@ export default class SignIn extends Component {
             .then((response) => {
                 localStorage.setItem("accessToken", response.accessToken)
                 this.props.onUserLogin()
+                this.props.history.push("/")
+                
             }
             )
     }
