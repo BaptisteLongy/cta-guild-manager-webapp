@@ -3,9 +3,14 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import { Link } from 'react-router-dom';
 import NavDropdown from 'react-bootstrap/NavDropdown'
+import {withRouter} from 'react-router-dom'
 
 class AppHeader extends Component {
 
+    handleSignOut = () => {
+        this.props.onUserLogout()
+        this.props.history.push('/')
+    }
 
     render() {
 
@@ -33,7 +38,7 @@ class AppHeader extends Component {
                                 <NavDropdown.Item as={Link} to="/heroesconfiguration">Configuration des héros</NavDropdown.Item>
     </div>}
                                 <NavDropdown.Divider />
-                                <NavDropdown.Item onClick={this.props.onUserLogout}>Sign Out</NavDropdown.Item>
+                                <NavDropdown.Item onClick={this.handleSignOut}>Sign Out</NavDropdown.Item>
                             </NavDropdown>
                         }
 
@@ -44,4 +49,4 @@ class AppHeader extends Component {
     }
 }
 
-export default AppHeader
+export default withRouter(AppHeader)
